@@ -8,7 +8,7 @@ public class ShoppingListAppDataContext : DbContext
     {
     }
 
-    public DbSet<User> Users { get; set; }
+    public DbSet<Account> Users { get; set; }
     public DbSet<ShoppingList> ShoppingLists { get; set; }
     public DbSet<ShoppingItem> ShoppingItems { get; set; }
 }

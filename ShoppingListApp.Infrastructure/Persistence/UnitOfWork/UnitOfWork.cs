@@ -6,14 +6,14 @@ namespace ShoppingListApp.Infrastructure.Persistence.UnitOfWork;
 public class UnitOfWork : IUnitOfWork
 {
     private readonly ShoppingListAppDataContext dbContext;
-    public IUserRepository UserRepository { get; }
+    public IAccountRepository AccountRepository { get; }
     public IShoppingListRepository ShoppingListRepository { get; }
 
 
-    public UnitOfWork(ShoppingListAppDataContext _dbContext, IUserRepository _userRepository, IShoppingListRepository _shoppingListRepository)
+    public UnitOfWork(ShoppingListAppDataContext _dbContext, IAccountRepository _accountRepository, IShoppingListRepository _shoppingListRepository)
     {
         dbContext = _dbContext;
-        UserRepository = _userRepository;
+        AccountRepository = _accountRepository;
         ShoppingListRepository = _shoppingListRepository;
     }
 

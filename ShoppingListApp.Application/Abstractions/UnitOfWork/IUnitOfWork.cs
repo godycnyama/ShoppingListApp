@@ -3,7 +3,7 @@
 namespace ShoppingListApp.Application.Abstractions.UnitOfWork;
 public interface IUnitOfWork
 {
-    IUserRepository UserRepository { get; }
+    IAccountRepository AccountRepository { get; }
     IShoppingListRepository ShoppingListRepository { get; }
     void Commit();
     void Rollback();

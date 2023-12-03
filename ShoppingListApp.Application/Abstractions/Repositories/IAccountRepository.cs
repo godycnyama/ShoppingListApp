@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 using ShoppingListApp.Domain.Entities;
 
 namespace ShoppingListApp.Application.Abstractions.Repositories;
-public interface IUserRepository : IGenericRepository<User>
+public interface IAccountRepository : IGenericRepository<Account>
 {
 }

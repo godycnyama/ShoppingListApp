@@ -3,9 +3,9 @@ using ShoppingListApp.Domain.Entities;
 using ShoppingListApp.Infrastructure.Persistence.Context;
 
 namespace ShoppingListApp.Infrastructure.Persistence.Repositories;
-public class ShoppingListRepository : GenericRepository<ShoppingList>, IShoppingListRepository
+public class AccountRepository : GenericRepository<Account>, IAccountRepository
 {
-    public ShoppingListRepository(ShoppingListAppDataContext dbContext) : base(dbContext)
+    public AccountRepository(ShoppingListAppDataContext dbContext) : base(dbContext)
     {
     }
 }

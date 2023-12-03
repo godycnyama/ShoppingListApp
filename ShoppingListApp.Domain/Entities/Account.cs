@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ShoppingListApp.Domain.Entities;
-public class User
+public class Account
 {
     [Key]
     public int UserID { get; set; }

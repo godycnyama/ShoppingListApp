@@ -18,7 +18,7 @@ public class AddItemPhotoEndpoint : ICarterModule
         .WithName("AddItemPhoto");
     }
 
-    private async Task<IResult> AddItemPhoto(int shoppingListID, int userID, int itemID, ISender sender)
+    private async Task<IResult> AddItemPhoto(int shoppingListID, int userID, int itemID, IFormFile file, ISender sender)
     {
         var shoppingList = await sender.Send(new AddItemPhotoRequest(id, 3));
         return Results.Ok(shoppingList);
