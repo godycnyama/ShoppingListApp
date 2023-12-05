@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using ShoppingItemApp.Application.Exceptions;
+using ShoppingListApp.Application.Abstractions.Services;
 using ShoppingListApp.Application.Abstractions.UnitOfWork;
 using ShoppingListApp.Application.Exceptions;
 using ShoppingListApp.Domain.Entities;
@@ -10,8 +11,9 @@ public sealed class AddItemPhotoHandler : IRequestHandler<AddItemPhotoRequest, S
 {
     private readonly IUnitOfWork unitOfWork;
     private readonly IMapper mapper;
+    private IFileService fileService;
 
-    public AddItemPhotoHandler(IMapper _mapper, IUnitOfWork _unitOfWork)
+    public AddItemPhotoHandler(IMapper _mapper, IUnitOfWork _unitOfWork, IFileService _fileService)
     {
         unitOfWork = _unitOfWork;
         mapper = _mapper;
@@ -24,12 +26,15 @@ public sealed class AddItemPhotoHandler : IRequestHandler<AddItemPhotoRequest, S
         {
             throw new ShoppingListNotFoundException(request.ShoppingListID.ToString());
         }
+
         ShoppingItem shoppingItem = shoppingList.ShoppingItems.FirstOrDefault(o => o.ShoppingItemID == request.ItemID);
         if (shoppingItem is null)
         {
             throw new ShoppingItemNotFoundException(request.ItemID.ToString());
         }
-        mapper.Map(request.ShoppingItem, shoppingItem);
+
+        var fileName = await fileService.UploadFile(request.File);
+        shoppingItem.PhotoFileName = fileName;
 
         unitOfWork.ShoppingListRepository.Update(shoppingList);
         await unitOfWork.CommitAsync();

@@ -1,4 +1,4 @@
-﻿namespace ShoppingItemApp.Application.Exceptions;
+﻿namespace ShoppingListApp.Application.Exceptions;
 public class ShoppingItemNotFoundException : Exception
 {
     public ShoppingItemNotFoundException()

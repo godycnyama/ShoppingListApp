@@ -5,4 +5,4 @@ using ShoppingListApp.Domain.Entities;
 
 namespace ShoppingListApp.Application.Features.ShoppingListFeatures.AddItemPhoto;
 
-public sealed record AddItemPhotoRequest(int ShoppingListID, int UserID, int ItemID) : IRequest<ShoppingList>;
+public sealed record AddItemPhotoRequest(int ShoppingListID, int UserID, int ItemID, IFormFile File) : IRequest<ShoppingList>;

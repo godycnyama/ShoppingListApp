@@ -20,7 +20,7 @@ public class AddItemPhotoEndpoint : ICarterModule
 
     private async Task<IResult> AddItemPhoto(int shoppingListID, int userID, int itemID, IFormFile file, ISender sender)
     {
-        var shoppingList = await sender.Send(new AddItemPhotoRequest(id, 3));
+        var shoppingList = await sender.Send(new AddItemPhotoRequest(shoppingListID,userID, itemID, file));
         return Results.Ok(shoppingList);
     }
 }

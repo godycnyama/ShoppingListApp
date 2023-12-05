@@ -23,6 +23,6 @@ public class ShoppingItem
     [MaxLength(4)]
     public string Currency { get; set; }
     [MaxLength(200)]
-    public string PhotoUrl { get; set; } = string.Empty;
+    public string PhotoFileName { get; set; } = string.Empty;
 }
 }

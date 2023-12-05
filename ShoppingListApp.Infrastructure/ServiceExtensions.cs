@@ -3,10 +3,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Minio;
 using ShoppingListApp.Application.Abstractions.Repositories;
+using ShoppingListApp.Application.Abstractions.Services;
 using ShoppingListApp.Application.Abstractions.UnitOfWork;
 using ShoppingListApp.Infrastructure.Persistence.Context;
 using ShoppingListApp.Infrastructure.Persistence.Repositories;
 using ShoppingListApp.Infrastructure.Persistence.UnitOfWork;
+using ShoppingListApp.Infrastructure.Services;
 
 namespace ShoppingListApp.Infrastructure;
 public static class ServiceExtensions
@@ -19,6 +21,7 @@ public static class ServiceExtensions
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IShoppingListRepository, ShoppingListRepository>();
         services.AddScoped<IAccountRepository, AccountRepository>();
+        services.AddScoped<IFileService, FileService>();
     }
 
 }
