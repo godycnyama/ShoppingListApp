@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using ShoppingListApp.Application.Features.ShoppingListFeatures.UpdateItemInShoppingListCommand;
+using ShoppingListApp.Application.Features.ShoppingListFeatures.UpdateItemInShoppingList;
 using ShoppingListApp.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -23,6 +23,6 @@ public class UpdateItemInShoppingListEndpoint : ICarterModule
     private async Task<IResult> UpdateItemInShoppingList(int shoppingListID, int userID, ShoppingItem shoppingItem, IMediator mediator)
     {
         var shoppingList = await mediator.Send(new UpdateItemInShoppingListRequest(shoppingListID, userID, shoppingItem));
-        return Results.Ok(shoppingList);
+        return TypedResults.Ok(shoppingList);
     }
 }

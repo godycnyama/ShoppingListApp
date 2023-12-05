@@ -9,8 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShoppingListApp.Application.Features.ShoppingListFeatures.AddItemPhoto;
-public class AddItemPhotoEndpoint : ICarterModule
+namespace ShoppingListApp.Application.Features.ShoppingListFeatures.AddShoppingItemPhoto;
+public class AddShoppingItemPhotoEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
@@ -18,9 +18,9 @@ public class AddItemPhotoEndpoint : ICarterModule
         .WithName("AddItemPhoto");
     }
 
-    private async Task<IResult> AddItemPhoto(int shoppingListID, int userID, int itemID, IFormFile file, ISender sender)
+    private async Task<IResult> AddItemPhoto(int shoppingListID, int userID, int itemID, IFormFile file, IMediator mediator)
     {
-        var shoppingList = await sender.Send(new AddItemPhotoRequest(shoppingListID,userID, itemID, file));
-        return Results.Ok(shoppingList);
+        var shoppingList = await mediator.Send(new AddShoppingItemPhotoRequest(shoppingListID, userID, itemID, file));
+        return TypedResults.Ok(shoppingList);
     }
 }

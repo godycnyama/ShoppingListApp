@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using MediatR;
-using ShoppingItemApp.Application.Exceptions;
 using ShoppingListApp.Application.Abstractions.UnitOfWork;
 using ShoppingListApp.Application.Exceptions;
 using ShoppingListApp.Domain.Entities;
@@ -29,8 +28,8 @@ public sealed class DeleteItemFromShoppingListHandler : IRequestHandler<DeleteIt
         {
             throw new ShoppingItemNotFoundException(request.ItemID.ToString());
         }
-        mapper.Map(request.ShoppingItem, shoppingItem);
-        shoppingList.ShoppingItems.FirstOrDefault(o => o.ShoppingItemID == request.ItemID).Quantity = shoppingItem.Quantity;
+
+        shoppingList.ShoppingItems.Remove(shoppingItem);
         unitOfWork.ShoppingListRepository.Update(shoppingList);
         await unitOfWork.CommitAsync();
         return shoppingList;

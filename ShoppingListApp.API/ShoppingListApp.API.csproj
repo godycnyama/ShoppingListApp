@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ShoppingListApp.Application\ShoppingListApp.Application.csproj" />
+    <ProjectReference Include="..\ShoppingListApp.Infrastructure\ShoppingListApp.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

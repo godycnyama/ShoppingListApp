@@ -9,18 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShoppingListApp.Application.Features.ShoppingListFeatures.GetShoppingListQuery;
+namespace ShoppingListApp.Application.Features.ShoppingListFeatures.GetShoppingList;
 public class GetShoppingListEndpoint: ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("api/v1/shoppinglists/{id:int}", GetShoppingListByID)
+        app.MapGet("api/v1/shoppinglists/{shoppingListID:int}", GetShoppingList)
         .WithName("GetShoppingList");
     }
 
-    private async Task<IResult> GetShoppingListByID(int id, ISender sender)
+    private async Task<IResult> GetShoppingList(int shoppingListID,int userId, IMediator mediator)
     {
-        var shoppingList = await sender.Send(new GetShoppingListRequest(id, 3));
-        return Results.Ok(shoppingList);
+        var shoppingList = await mediator.Send(new GetShoppingListRequest(shoppingListID,userId));
+        return TypedResults.Ok(shoppingList);
     }
 }

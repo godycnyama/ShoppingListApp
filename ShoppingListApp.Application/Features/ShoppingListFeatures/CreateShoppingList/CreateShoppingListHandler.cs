@@ -4,7 +4,7 @@ using ShoppingListApp.Application.Abstractions.UnitOfWork;
 using ShoppingListApp.Domain.Entities;
 
 namespace ShoppingListApp.Application.Features.ShoppingListFeatures.CreateShoppingList;
-public sealed class GetShoppingListHandler : IRequestHandler<UpdateShoppingListRequest, ShoppingList>
+public sealed class GetShoppingListHandler : IRequestHandler<CreateShoppingListRequest, ShoppingList>
 {
     private readonly IUnitOfWork unitOfWork;
     private readonly IMapper mapper;
@@ -15,7 +15,7 @@ public sealed class GetShoppingListHandler : IRequestHandler<UpdateShoppingListR
         mapper = _mapper;
     }
 
-    public async Task<ShoppingList> Handle(UpdateShoppingListRequest request, CancellationToken cancellationToken)
+    public async Task<ShoppingList> Handle(CreateShoppingListRequest request, CancellationToken cancellationToken)
     {
         ShoppingList shoppingList = mapper.Map<ShoppingList>(request);
         await unitOfWork.ShoppingListRepository.AddAsync(shoppingList);

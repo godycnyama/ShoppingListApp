@@ -25,4 +25,4 @@ public class ShoppingItem
     [MaxLength(200)]
     public string PhotoFileName { get; set; } = string.Empty;
 }
-}
+

@@ -3,9 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using ShoppingListApp.Application.Features.ShoppingListFeatures.GetShoppingListQuery;
-using ShoppingListApp.Application.Features.ShoppingListFeatures.GetShoppingListsQuery;
-using System;
+using ShoppingListApp.Application.Features.ShoppingListFeatures.GetShoppingList;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +18,9 @@ public class GetShoppingListsEndpoint : ICarterModule
         .WithName("GetShoppingLists");
     }
 
-    private async Task<IResult> GetShoppingLists(ISender sender)
+    private async Task<IResult> GetShoppingLists(IMediator mediator)
     {
-        var shoppingLists = await sender.Send(new GetShoppingListsRequest(2, 3));
-        return Results.Ok(shoppingLists);
+        var shoppingLists = await mediator.Send(new GetShoppingListsRequest(2, 3));
+        return TypedResults.Ok(shoppingLists);
     }
 }

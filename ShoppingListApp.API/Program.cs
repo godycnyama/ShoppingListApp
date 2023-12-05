@@ -1,5 +1,6 @@
 using Carter;
 using ShoppingListApp.Application;
+using ShoppingListApp.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddCarter();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.ConfigureApplicationServices();
+builder.Services.ConfigureInfrastructureServices(builder.Configuration);
 
 
 var app = builder.Build();

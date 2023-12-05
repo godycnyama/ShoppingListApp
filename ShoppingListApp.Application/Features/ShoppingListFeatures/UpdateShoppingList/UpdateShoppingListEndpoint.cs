@@ -21,6 +21,6 @@ public class UpdateShoppingListEndpoint : ICarterModule
     private async Task<IResult> UpdateShoppingList(UpdateShoppingListRequest updateShoppingListRequest, IMediator mediator)
     {
         var shoppingList = await mediator.Send(updateShoppingListRequest);
-        return Results.Ok(shoppingList);
+        return TypedResults.Ok(shoppingList);
     }
 }

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using MediatR;
-using ShoppingItemApp.Application.Exceptions;
 using ShoppingListApp.Application.Abstractions.Services;
 using ShoppingListApp.Application.Abstractions.UnitOfWork;
 using ShoppingListApp.Application.Common.Responses;

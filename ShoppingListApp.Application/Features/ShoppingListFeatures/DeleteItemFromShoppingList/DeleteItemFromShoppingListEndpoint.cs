@@ -19,9 +19,9 @@ public class DeleteItemFromShoppingListEndpoint : ICarterModule
         .WithName("DeleteItemFromShoppingList");
     }
 
-    private async Task<IResult> DeleteItemFromShoppingList(int shoppingListID,int userID, int itemID, ISender sender)
+    private async Task<IResult> DeleteItemFromShoppingList(int shoppingListID,int userID, int itemID, IMediator mediator)
     {
-        var shoppingList = await sender.Send(new DeleteItemFromShoppingListRequest(shoppingListID,userID, itemID));
-        return Results.Ok(shoppingList);
+        var shoppingList = await mediator.Send(new DeleteItemFromShoppingListRequest(shoppingListID,userID, itemID));
+        return TypedResults.Ok(shoppingList);
     }
 }
