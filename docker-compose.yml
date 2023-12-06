@@ -1,0 +1,34 @@
+version: '3.4'
+
+services:
+  shoppinglistapp.api:
+    image: ${DOCKER_REGISTRY-}shoppinglistappapi
+    container_name: shoppinglistappapi
+    build:
+      context: .
+      dockerfile: ShoppingListApp.API/Dockerfile
+    depends_on:
+      - sqlserver
+      - minio
+
+  sqlserver:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    container_name: sql_server2022
+    environment:
+      - SA_PASSWORD=A&VeryComplex123Password
+      - ACCEPT_EULA=Y
+    ports:
+      - "5434:1433"
+
+  minio:
+    image: docker.io/bitnami/minio:2022
+    container_name: minio
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+
+    environment:
+      - MINIO_ROOT_USER=Q3AM3UQ867SPQQA43P2F
+      - MINIO_ROOT_PASSWORD=zuf+tfteSlswRu7BJ86wtrueekitnifILbZam1KYY3TG
+      - MINIO_ENDPOINT=localhost:9001
+    restart: always

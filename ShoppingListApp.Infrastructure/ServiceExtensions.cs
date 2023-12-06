@@ -17,7 +17,9 @@ public static class ServiceExtensions
     {
         var connectionString = configuration.GetConnectionString("SQLServer");
         services.AddDbContext<ShoppingListAppDataContext>(opt => opt.UseSqlServer(connectionString));
-        services.AddMinio(configuration["Minio:AccessKey"], configuration["Minio:SecretKey"]);
+        services.AddMinio(configureClient => configureClient
+            .WithEndpoint(Environment.GetEnvironmentVariable("MINIO_ENDPOINT") ?? configuration["Minio:Endpoint"])
+            .WithCredentials(Environment.GetEnvironmentVariable("MINIO_ROOT_USER") ?? configuration["Minio:AccessKey"], Environment.GetEnvironmentVariable("MINIO_ROOT_PASSWORD") ?? configuration["Minio:SecretKey"]));
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IShoppingListRepository, ShoppingListRepository>();
         services.AddScoped<IAccountRepository, AccountRepository>();

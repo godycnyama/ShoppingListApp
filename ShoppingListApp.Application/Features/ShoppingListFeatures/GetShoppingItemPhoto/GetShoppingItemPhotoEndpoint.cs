@@ -18,7 +18,7 @@ public class GetShoppingItemPhotoEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("api/v1/shoppinglists/{shoppingListID:int}/items/{itemID:int}/photo/{fileName:string}", GetShoppingItemPhoto)
+        app.MapGet("api/v1/shoppinglists/{shoppingListID:int}/items/{itemID:int}/photo/{fileName}", GetShoppingItemPhoto)
         .WithName("GetShoppingItemPhoto");
     }
 
