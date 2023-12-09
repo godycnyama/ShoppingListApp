@@ -39,30 +39,18 @@ Follow these steps to get started with the Shopping List API:
 
 4. **Build the project:**
    - Build the solution to restore dependencies and compile the code.
-
-5. **Run database migrations:**
-   - Select Roulette.Infrastructure as your default project for migrations in Visual Studio Package Manager Console. At the same time making sure you have selected Roulette.API as your 
-      startup project in Visual Studio.
-     In Visual Studio Package Manager Console run the following command to create your initial migration.   
-      ```bash
-     add-migration rouletteDBMigration1
+     
+5. **Run the application:**
+   - Start the application by running the following commands on the command line, after navigating to the root directory
+       ```bash
+     docker-compose up
      ```
-      To apply the migration you have created, run the following command in Visual Studio Package Manager Console.
-     ```bash
-     update-database
-     ```
-
-6. **Run the application:**
-   - Start the application within Visual Studio by first selecting Roulette.API as your startup project or use the command  line with the following command:
-     ```bash
-     dotnet run
-     ```
-
+       
 7. **Access the API:**
-   - The API will be available at `https://localhost:7010` or `http://localhost:5105`.
+   - The API will be available at `https://localhost:7292` or `http://localhost:5251`.
 
 8. **Access the API Swagger Documentation:**
-   - The API Swagger documentation will be available at `https://localhost:7010/swagger/index.html`.
+   - The API Swagger documentation will be available at `https://localhost:7292/swagger/index.html`.
 
 9. **Run unit tests:**
    - Run the unit tests within Visual Studio or use the command line with the following command:
