@@ -1,5 +1,4 @@
 # ShoppingListApp
-# Roulette Game API
 
 ## Overview
 
@@ -15,27 +14,27 @@ A number of designs patterns were used during the implemantation of the solution
 
 ## Features
 
-- Manage roulette game sessions.
-- Manage bets placement.
-- Manage roulette wheel spins and record the winning numbers.
-- Manage accounts for players.
-- Manage payouts. 
+- Create shopping lists.
+- Update shopping lists.
+- Add and update and delete shopping list items.
+- Delete shopping lists.
+- Add photos to shopping list items. 
 
 ## Getting Started
 
-Follow these steps to get started with the Roulette Game API:
+Follow these steps to get started with the Shopping List API:
 
 1. **Prerequisites:**
    - [Visual Studio](https://visualstudio.microsoft.com/) installed on your system.
-   - [.NET Core SDK 7](https://dotnet.microsoft.com/download/dotnet) for building and running the project.
+   - [.NET Core SDK 8](https://dotnet.microsoft.com/download/dotnet) for building and running the project.
 
 2. **Clone the repository:**
    ```bash
-   git clone https://github.com/godycnyama/DRVCAssessment.git
+   git clone https://github.com/godycnyama/ShoppingListApp.git
    ```
 
 3. **Open the project:**
-   - Open the solution file `RouletteGame.sln` in Visual Studio.
+   - Open the solution file `ShoppingListApp.sln` in Visual Studio.
 
 4. **Build the project:**
    - Build the solution to restore dependencies and compile the code.
