@@ -72,34 +72,19 @@ Follow these steps to get started with the Roulette Game API:
 
 ## Usage
 
-The Roulette Game API follows RESTful principles and can be used by sending HTTP requests to its endpoints. You can interact with the API using your favorite HTTP client e.g Postman
+The Shopping List API follows RESTful principles and can be used by sending HTTP requests to its endpoints. You can interact with the API using your favorite HTTP client e.g Postman
 
 ## Endpoints
 
 The API provides the following endpoints:
 
-- `POST /roulette/api/accounts`: Create a new player account.
-- `PUT /roulette/api/accounts`: Update player account.
-- `GET /roulette/api/accounts`: Get player accounts.
-- `GET /roulette/api/accounts/{id}`: Get player account by id.
-- `DELETE /roulette/api/accounts/{id}`: Delete player account by id.
-- `POST /roulette/api/sessions`: Create a new session.
-- `PUT /roulette/api/sessions`: Update session.
-- `GET /roulette/api/sessions`: Get sessions.
-- `GET /roulette/api/sessions/{id}`: Get session by id.
-- `DELETE /roulette/api/sessions/{id}`: Delete session by id.
-- `POST /roulette/api/bets`: Create a new bet.
-- `PUT /roulette/api/bets`: Update bet.
-- `GET /roulette/api/bets`: Get bets.
-- `GET /roulette/api/bets/{id}`: Get bet by id.
-- `DELETE /roulette/api/bets/{id}`: Delete bet by id.
-- `POST /roulette/api/spins`: Create a new spin.
-- `PUT /roulette/api/spins`: Update spin.
-- `GET /roulette/api/spins`: Get spins.
-- `GET /roulette/api/spins/{id}`: Get spin by id.
-- `DELETE /roulette/api/spins/{id}`: Delete spin by id.
-- `POST /roulette/api/payouts`: Create a new payout.
-- `PUT /roulette/api/payouts`: Update payout.
-- `GET /roulette/api/payouts`: Get payouts.
-- `GET /roulette/api/payouts/{id}`: Get payout by id.
-- `DELETE /roulette/api/payouts/{id}`: Delete payout by id.
+- `POST /api/v1/shoppinglists`: Create a new shopping list.
+- `PUT /api/v1/shoppinglists`: Update shopping list.
+- `GET /api/v1/shoppinglists`: Get all shopping lists.
+- `GET /api/v1/shoppinglists/{id}`: Get shopping list by id.
+- `DELETE /api/v1/shoppinglists/{id}`: Delete shopping list by id.
+- `POST /api/v1/shoppinglists/{shoppingListID}/items`: Add a shopping item to a shopping list.
+- `PUT /api/v1/shoppinglists/{shoppingListID}/items`: Update item in shopping list.
+- `DELETE /api/v1/shoppinglists/{shoppingListID}/items/{id}`: Delete item from shopping list.
+- `POST /api/v1/shoppinglists/{shoppingListID}/items/{id}/photo`: Add photo to shopping list item.
+- `GET /api/v1/shoppinglists/{shoppingListID}/items/{id}/photo/{fileName}`: Get shopping list item photo.
