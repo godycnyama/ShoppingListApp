@@ -1,4 +1,4 @@
-# ShoppingListApp
+# ShoppingListApp API
 
 ## Overview
 
