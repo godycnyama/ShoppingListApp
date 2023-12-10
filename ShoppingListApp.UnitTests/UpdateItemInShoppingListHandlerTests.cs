@@ -1,6 +1,7 @@
 using AutoMapper;
 using Moq;
 using ShoppingListApp.Application.Abstractions.UnitOfWork;
+using ShoppingListApp.Application.Common.DTO;
 using ShoppingListApp.Application.Exceptions;
 using ShoppingListApp.Application.Features.ShoppingListFeatures.UpdateItemInShoppingList;
 using ShoppingListApp.Domain.Entities;
@@ -27,7 +28,7 @@ public class UpdateItemInShoppingListHandlerTests
     public async Task Handle_ShoppingListNotFound_ThrowsException()
     {
         // Arrange
-        var request = new UpdateItemInShoppingListRequest(1, "james.madon@hotmail.com", new ShoppingItem());
+        var request = new UpdateItemInShoppingListRequest(1,1, "james.madon@hotmail.com", new ShoppingItemDTO());
 
         // Act & Assert
         await Assert.ThrowsExceptionAsync<ShoppingListNotFoundException>(() => handler.Handle(request, CancellationToken.None));
@@ -39,7 +40,7 @@ public class UpdateItemInShoppingListHandlerTests
         // Arrange
         var shoppingList = new ShoppingList { UserName = "james.madon@hotmail.com", ShoppingListID = 1, ShoppingItems = new List<ShoppingItem>() };
         mockUnitOfWork.Setup(u => u.ShoppingListRepository.Get(It.IsAny<Expression<Func<ShoppingList, bool>>>())).Returns(shoppingList);
-        var request = new UpdateItemInShoppingListRequest(1, "james.madon@hotmail.com", new ShoppingItem { ShoppingItemID = 2 });
+        var request = new UpdateItemInShoppingListRequest(1, 1, "james.madon@hotmail.com", new ShoppingItemDTO());
 
         // Act & Assert
         await Assert.ThrowsExceptionAsync<ShoppingItemNotFoundException>(() => handler.Handle(request, CancellationToken.None));
@@ -52,7 +53,7 @@ public class UpdateItemInShoppingListHandlerTests
         var shoppingItem = new ShoppingItem { ShoppingItemID = 2 };
         var shoppingList = new ShoppingList { UserName = "james.madon@hotmail.com", ShoppingListID = 1, ShoppingItems = new List<ShoppingItem> { shoppingItem } };
         mockUnitOfWork.Setup(u => u.ShoppingListRepository.Get(It.IsAny<Expression<Func<ShoppingList, bool>>>())).Returns(shoppingList);
-        var request = new UpdateItemInShoppingListRequest (1, "james.madon@hotmail.com", new ShoppingItem { ShoppingItemID = 2 });
+        var request = new UpdateItemInShoppingListRequest (1,1, "james.madon@hotmail.com", new ShoppingItemDTO());
 
         // Act
         var result = await handler.Handle(request, CancellationToken.None);

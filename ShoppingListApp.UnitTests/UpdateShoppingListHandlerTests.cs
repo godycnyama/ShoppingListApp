@@ -28,7 +28,7 @@ public class UpdateShoppingListHandlerTests
     {
         // Arrange
         var shoppingList = new ShoppingList { ShoppingListID = 1 };
-        var request = new UpdateShoppingListRequest(1,5,"June","2023",new List<ShoppingItem>());
+        var request = new UpdateShoppingListRequest(1, "james.madon@hotmail.com", "June","2023",new List<ShoppingItem>());
 
         mockUnitOfWork.Setup(u => u.ShoppingListRepository.GetAsync(It.IsAny<Expression<Func<ShoppingList, bool>>>()))
             .ReturnsAsync(shoppingList);
@@ -46,7 +46,7 @@ public class UpdateShoppingListHandlerTests
     public async Task Handle_ShouldThrowException_WhenShoppingListDoesNotExist()
     {
         // Arrange
-        var request = new UpdateShoppingListRequest (1, 5, "June", "2023", new List<ShoppingItem>());
+        var request = new UpdateShoppingListRequest (1, "james.madon@hotmail.com", "June", "2023", new List<ShoppingItem>());
 
         mockUnitOfWork.Setup(u => u.ShoppingListRepository.GetAsync(It.IsAny<Expression<Func<ShoppingList, bool>>>()))
             .ReturnsAsync((ShoppingList)null);

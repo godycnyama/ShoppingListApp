@@ -14,13 +14,13 @@ public class DeleteShoppingListEndpoint: ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapDelete("api/v1/shoppinglists/{id:int}", DeleteShoppingList)
+        app.MapDelete("api/v1/shoppinglists/{shoppingListID:int}", DeleteShoppingList)
         .WithName("DeleteShoppingList");
     }
 
-    private async Task<IResult> DeleteShoppingList(int id, IMediator mediator)
+    private async Task<IResult> DeleteShoppingList(int shoppingListID,string userName, IMediator mediator)
     {
-        var shoppingList = await mediator.Send(new DeleteShoppingListRequest(id, 3));
+        var shoppingList = await mediator.Send(new DeleteShoppingListRequest(shoppingListID, userName));
         return Results.Ok(shoppingList);
     }
 }

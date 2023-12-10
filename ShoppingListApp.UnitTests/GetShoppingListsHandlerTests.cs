@@ -28,7 +28,7 @@ public class GetShoppingListsHandlerTests
         _mockUnitOfWork.Setup(u => u.ShoppingListRepository.GetAllAsync(It.IsAny<Expression<Func<ShoppingList, bool>>>()))
             .ReturnsAsync(shoppingLists);
 
-        var request = new GetShoppingListsRequest(1,3);
+        var request = new GetShoppingListsRequest("james.madon@hotmail.com");
 
         // Act
         var result = await _handler.Handle(request, CancellationToken.None);
@@ -45,7 +45,7 @@ public class GetShoppingListsHandlerTests
         _mockUnitOfWork.Setup(u => u.ShoppingListRepository.GetAllAsync(It.IsAny<Expression<Func<ShoppingList, bool>>>()))
             .ReturnsAsync((IEnumerable<ShoppingList>)null);
 
-        var request = new GetShoppingListsRequest (1, 3);
+        var request = new GetShoppingListsRequest("james.madon@hotmail.com");
 
         // Act & Assert
         await Assert.ThrowsExceptionAsync<ShoppingListsNotFoundException>(() => _handler.Handle(request, CancellationToken.None));

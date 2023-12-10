@@ -18,9 +18,9 @@ public class GetShoppingListEndpoint: ICarterModule
         .WithName("GetShoppingList");
     }
 
-    private async Task<IResult> GetShoppingList(int shoppingListID,int userId, IMediator mediator)
+    private async Task<IResult> GetShoppingList(int shoppingListID,string userName, IMediator mediator)
     {
-        var shoppingList = await mediator.Send(new GetShoppingListRequest(shoppingListID,userId));
+        var shoppingList = await mediator.Send(new GetShoppingListRequest(shoppingListID, userName));
         return TypedResults.Ok(shoppingList);
     }
 }

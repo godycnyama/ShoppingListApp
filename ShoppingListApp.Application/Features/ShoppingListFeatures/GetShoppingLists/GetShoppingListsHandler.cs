@@ -16,8 +16,9 @@ public sealed class GetShoppingListsHandler : IRequestHandler<GetShoppingListsRe
 
     public async Task<IEnumerable<ShoppingList>> Handle(GetShoppingListsRequest request, CancellationToken cancellationToken)
     {
-        var shoppingLists = await unitOfWork.ShoppingListRepository.GetAllAsync(item => item.ShoppingListID == request.ShoppingListID && item.UserName.Equals(request.UserName));
-        if (shoppingLists is null)
+        //var shoppingLists = await unitOfWork.ShoppingListRepository.GetAllAsync(item => item.ShoppingListID == request.ShoppingListID && item.UserName.Equals(request.UserName));
+        var shoppingLists = unitOfWork.ShoppingListRepository.Get(o => o.ShoppingItems).Where(o => o.UserName.Equals(request.UserName)).ToList();
+        if (shoppingLists.Count() == 0)
         {
             throw new ShoppingListsNotFoundException();
         }

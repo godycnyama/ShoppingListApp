@@ -29,7 +29,7 @@ public class DeleteShoppingListHandlerTests
     {
         // Arrange
         var shoppingList = new ShoppingList { ShoppingListID = 1, UserName = "james.madon@hotmail.com" };
-        var request = new DeleteShoppingListRequest(1,1);
+        var request = new DeleteShoppingListRequest(1, "james.madon@hotmail.com");
         mockUnitOfWork.Setup(u => u.ShoppingListRepository.GetAsync(It.IsAny<Expression<Func<ShoppingList, bool>>>())).ReturnsAsync(shoppingList);
 
         // Act
@@ -46,7 +46,7 @@ public class DeleteShoppingListHandlerTests
     public async Task Handle_ShouldThrowShoppingListNotFoundException_WhenShoppingListIsNotFound()
     {
         // Arrange
-        var request = new DeleteShoppingListRequest (1, 1);
+        var request = new DeleteShoppingListRequest (1, "james.madon@hotmail.com");
         mockUnitOfWork.Setup(u => u.ShoppingListRepository.GetAsync(It.IsAny<Expression<Func<ShoppingList, bool>>>())).ReturnsAsync((ShoppingList)null);
 
         // Act & Assert

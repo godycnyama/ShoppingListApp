@@ -19,6 +19,7 @@ public sealed class CreateShoppingListHandler : IRequestHandler<CreateShoppingLi
     {
         ShoppingList shoppingList = mapper.Map<ShoppingList>(request);
         await unitOfWork.ShoppingListRepository.AddAsync(shoppingList);
+        await unitOfWork.CommitAsync();
         return shoppingList;
     }
 }

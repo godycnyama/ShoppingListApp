@@ -4,4 +4,4 @@ using ShoppingListApp.Domain.Entities;
 
 namespace ShoppingListApp.Application.Features.ShoppingListFeatures.DeleteShoppingList;
 
-public sealed record DeleteShoppingListRequest(int ShoppingListID, int UserName) : IRequest<MessageResponse>;
+public sealed record DeleteShoppingListRequest(int ShoppingListID, string UserName) : IRequest<MessageResponse>;

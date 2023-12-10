@@ -23,12 +23,12 @@ public sealed class UpdateItemInShoppingListHandler : IRequestHandler<UpdateItem
         {
             throw new ShoppingListNotFoundException(request.ShoppingListID.ToString());
         }
-        ShoppingItem shoppingItem = shoppingList.ShoppingItems.FirstOrDefault(o => o.ShoppingItemID == request.ShoppingItem.ShoppingItemID);
+        ShoppingItem shoppingItem = shoppingList.ShoppingItems.FirstOrDefault(o => o.ShoppingItemID == request.ShoppingItemID);
         if (shoppingItem is null)
         {
-            throw new ShoppingItemNotFoundException(request.ShoppingItem.ShoppingItemID.ToString());
+            throw new ShoppingItemNotFoundException(request.ShoppingItemID.ToString());
         }
-        mapper.Map(request.ShoppingItem, shoppingItem);
+        mapper.Map(request.ShoppingItemDTO, shoppingItem);
 
         unitOfWork.ShoppingListRepository.Update(shoppingList);
         await unitOfWork.CommitAsync();

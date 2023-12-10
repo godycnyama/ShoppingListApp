@@ -26,7 +26,7 @@ public class GetShoppingListHandlerTests
     public async Task Handle_ShouldReturnShoppingList()
     {
         // Arrange
-        var request = new GetShoppingListRequest(1, 1);
+        var request = new GetShoppingListRequest(1, "james.madon@hotmail.com");
         var shoppingList = new ShoppingList();
         mockMapper.Setup(m => m.Map<ShoppingList>(request)).Returns(shoppingList);
         mockUnitOfWork.Setup(u => u.ShoppingListRepository.AddAsync(shoppingList));
