@@ -16,11 +16,12 @@ public sealed class AddShoppingItemPhotoHandler : IRequestHandler<AddShoppingIte
     {
         unitOfWork = _unitOfWork;
         mapper = _mapper;
+        fileService = _fileService;
     }
 
     public async Task<ShoppingList> Handle(AddShoppingItemPhotoRequest request, CancellationToken cancellationToken)
     {
-        ShoppingList shoppingList = unitOfWork.ShoppingListRepository.Get(o => o.ShoppingItems).Where(o => o.UserID == request.UserID && o.ShoppingListID == request.ShoppingListID).FirstOrDefault();
+        ShoppingList shoppingList = unitOfWork.ShoppingListRepository.Get(o => o.ShoppingItems).Where(o => o.UserName.Equals(request.UserName) && o.ShoppingListID == request.ShoppingListID).FirstOrDefault();
         if (shoppingList is null)
         {
             throw new ShoppingListNotFoundException(request.ShoppingListID.ToString());

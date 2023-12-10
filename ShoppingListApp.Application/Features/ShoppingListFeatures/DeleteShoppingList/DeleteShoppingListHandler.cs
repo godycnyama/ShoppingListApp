@@ -20,7 +20,7 @@ public sealed class DeleteShoppingListHandler : IRequestHandler<DeleteShoppingLi
 
     public async Task<MessageResponse> Handle(DeleteShoppingListRequest request, CancellationToken cancellationToken)
     {
-        ShoppingList shoppingList = await unitOfWork.ShoppingListRepository.GetAsync(item => item.ShoppingListID == request.ShoppingListID && item.UserID == request.UserID);
+        ShoppingList shoppingList = await unitOfWork.ShoppingListRepository.GetAsync(item => item.ShoppingListID == request.ShoppingListID && item.UserName.Equals(request.UserName));
         if (shoppingList is null)
         {
             throw new ShoppingListNotFoundException(request.ShoppingListID.ToString());

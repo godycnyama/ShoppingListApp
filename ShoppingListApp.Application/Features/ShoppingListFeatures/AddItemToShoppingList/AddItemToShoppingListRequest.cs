@@ -4,4 +4,4 @@ using ShoppingListApp.Domain.Entities;
 
 namespace ShoppingListApp.Application.Features.ShoppingListFeatures.AddItemToShoppingList;
 
-public sealed record AddItemToShoppingListRequest(int ShoppingListID,int UserID, ShoppingItemDTO ShoppingItemDTO) : IRequest<ShoppingList>;
+public sealed record AddItemToShoppingListRequest(int ShoppingListID,string UserName, ShoppingItemDTO ShoppingItemDTO) : IRequest<ShoppingList>;

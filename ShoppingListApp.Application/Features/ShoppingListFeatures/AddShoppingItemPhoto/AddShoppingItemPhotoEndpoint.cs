@@ -18,9 +18,9 @@ public class AddShoppingItemPhotoEndpoint : ICarterModule
         .WithName("AddItemPhoto");
     }
 
-    private async Task<IResult> AddItemPhoto(int shoppingListID, int userID, int itemID, IFormFile file, IMediator mediator)
+    private async Task<IResult> AddItemPhoto(int shoppingListID, string userName, int itemID, IFormFile file, IMediator mediator)
     {
-        var shoppingList = await mediator.Send(new AddShoppingItemPhotoRequest(shoppingListID, userID, itemID, file));
+        var shoppingList = await mediator.Send(new AddShoppingItemPhotoRequest(shoppingListID, userName, itemID, file));
         return TypedResults.Ok(shoppingList);
     }
 }

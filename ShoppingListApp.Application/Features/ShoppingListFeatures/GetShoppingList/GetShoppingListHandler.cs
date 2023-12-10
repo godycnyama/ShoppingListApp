@@ -16,7 +16,7 @@ public sealed class GetShoppingListHandler : IRequestHandler<GetShoppingListRequ
 
     public async Task<ShoppingList> Handle(GetShoppingListRequest request, CancellationToken cancellationToken)
     {
-        ShoppingList shoppingList = await unitOfWork.ShoppingListRepository.GetAsync(item => item.ShoppingListID == request.ShoppingListID && item.UserID == request.UserID);
+        ShoppingList shoppingList = await unitOfWork.ShoppingListRepository.GetAsync(item => item.ShoppingListID == request.ShoppingListID && item.UserName.Equals(request.UserName));
         if (shoppingList is null)
         {
             throw new ShoppingListNotFoundException(request.ShoppingListID.ToString());

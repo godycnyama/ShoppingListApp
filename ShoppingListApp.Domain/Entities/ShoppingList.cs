@@ -13,7 +13,9 @@ public class ShoppingList
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int ShoppingListID { get; set; }
     [Required]
-    public int UserID { get; set; }
+    [RegularExpression(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$",
+            ErrorMessage = "Please enter a valid email")]
+    public string UserName { get; set; }
     [Required]
     [MaxLength(20)]
     public string Month { get; set; }

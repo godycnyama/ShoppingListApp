@@ -19,9 +19,9 @@ public class AddItemToShoppingListEndpoint : ICarterModule
         .WithName("AddItemToShoppingList");
     }
 
-    private async Task<IResult> AddItemToShoppingList(int shoppingListID, int userID, ShoppingItemDTO shoppingItemDTO, IMediator mediator)
+    public async Task<IResult> AddItemToShoppingList(int shoppingListID, string userName, ShoppingItemDTO shoppingItemDTO, IMediator mediator)
     {
-        var shoppingList = await mediator.Send(new AddItemToShoppingListRequest(shoppingListID, userID, shoppingItemDTO));
+        var shoppingList = await mediator.Send(new AddItemToShoppingListRequest(shoppingListID, userName, shoppingItemDTO));
         return TypedResults.Ok(shoppingList);
     }
 }

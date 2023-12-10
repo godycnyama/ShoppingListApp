@@ -20,9 +20,9 @@ public class UpdateItemInShoppingListEndpoint : ICarterModule
         .WithName("UpdateItemInShoppingList");
     }
 
-    private async Task<IResult> UpdateItemInShoppingList(int shoppingListID, int userID, ShoppingItem shoppingItem, IMediator mediator)
+    private async Task<IResult> UpdateItemInShoppingList(int shoppingListID, string userName, ShoppingItem shoppingItem, IMediator mediator)
     {
-        var shoppingList = await mediator.Send(new UpdateItemInShoppingListRequest(shoppingListID, userID, shoppingItem));
+        var shoppingList = await mediator.Send(new UpdateItemInShoppingListRequest(shoppingListID, userName, shoppingItem));
         return TypedResults.Ok(shoppingList);
     }
 }

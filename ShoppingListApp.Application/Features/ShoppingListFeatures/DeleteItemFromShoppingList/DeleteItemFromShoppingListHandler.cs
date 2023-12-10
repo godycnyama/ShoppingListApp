@@ -18,7 +18,7 @@ public sealed class DeleteItemFromShoppingListHandler : IRequestHandler<DeleteIt
 
     public async Task<ShoppingList> Handle(DeleteItemFromShoppingListRequest request, CancellationToken cancellationToken)
     {
-        ShoppingList shoppingList = unitOfWork.ShoppingListRepository.Get(o => o.ShoppingItems).Where(o => o.UserID == request.UserID && o.ShoppingListID == request.ShoppingListID).FirstOrDefault();
+        ShoppingList shoppingList = unitOfWork.ShoppingListRepository.Get(o => o.ShoppingItems).Where(o => o.UserName.Equals(request.UserName) && o.ShoppingListID == request.ShoppingListID).FirstOrDefault();
         if (shoppingList is null)
         {
             throw new ShoppingListNotFoundException(request.ShoppingListID.ToString());

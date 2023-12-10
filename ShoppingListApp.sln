@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingListApp.API", "Shop
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{0FAEADB6-A7BD-4E9F-A8AC-AF0CA1374B8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingListApp.UnitTests", "ShoppingListApp.UnitTests\ShoppingListApp.UnitTests.csproj", "{57AA9CF5-1F84-49B0-99F0-A74F89D65843}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{0FAEADB6-A7BD-4E9F-A8AC-AF0CA1374B8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FAEADB6-A7BD-4E9F-A8AC-AF0CA1374B8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FAEADB6-A7BD-4E9F-A8AC-AF0CA1374B8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57AA9CF5-1F84-49B0-99F0-A74F89D65843}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57AA9CF5-1F84-49B0-99F0-A74F89D65843}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57AA9CF5-1F84-49B0-99F0-A74F89D65843}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57AA9CF5-1F84-49B0-99F0-A74F89D65843}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{657709B6-DD49-4D3F-AB69-652317D97DA3} = {1A7B9842-EBEB-4A48-80EB-690DB8F251AA}
 		{79E39909-BC16-477F-971B-90105B5E9A1C} = {1A7B9842-EBEB-4A48-80EB-690DB8F251AA}
 		{D57DB69C-EEC5-4888-8AA7-138E2A99931B} = {1A7B9842-EBEB-4A48-80EB-690DB8F251AA}
+		{57AA9CF5-1F84-49B0-99F0-A74F89D65843} = {00D73FAC-35A5-4E92-A88D-C1620335EBB7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1FB56A70-BB0E-4288-8335-2C1A74530C00}

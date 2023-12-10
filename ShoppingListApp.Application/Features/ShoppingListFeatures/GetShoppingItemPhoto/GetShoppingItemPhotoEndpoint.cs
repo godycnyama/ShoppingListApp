@@ -22,7 +22,7 @@ public class GetShoppingItemPhotoEndpoint : ICarterModule
         .WithName("GetShoppingItemPhoto");
     }
 
-    private async Task<IResult> GetShoppingItemPhoto(int shoppingListID, int userID, int itemID, string fileName,IMediator mediator)
+    private async Task<IResult> GetShoppingItemPhoto(int shoppingListID, string UserName, int itemID, string fileName,IMediator mediator)
     {
         FileResponse fileResponse = await mediator.Send(new GetShoppingItemPhotoRequest(fileName));
         return TypedResults.File(fileResponse.Data, fileResponse.ContentType, fileResponse.FileName);
