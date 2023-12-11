@@ -43,7 +43,7 @@ Follow these steps to get started with the Shopping List API:
 5. **Run the application:**
    - Start the application by running the following commands on the command line, after navigating to the root directory
        ```bash
-     docker-compose up
+     docker-compose up -d
      ```
        
 7. **Access the API:**
