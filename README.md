@@ -80,4 +80,4 @@ The API provides the following endpoints:
 - `GET /api/v1/shoppinglists/{shoppingListID}/items/{id}/photo/{fileName}`: Get shopping list item photo.
 
 ## Security
-- This API is OAuth2.0 secured using Auth0 as the authentication provider. In order for one to test it, one needs to attach a Bearer Tokento the authorization header. I can make a manually generated token available for testing purposes.
+- This API is OAuth2.0 secured using Auth0 as the authentication provider. In order for one to test it, one needs to attach a Bearer Token to the authorization header. I can make a manually generated token available for testing purposes.
