@@ -18,14 +18,22 @@ public sealed class UpdateShoppinListHandler : IRequestHandler<UpdateShoppingLis
 
     public async Task<ShoppingList> Handle(UpdateShoppingListRequest request, CancellationToken cancellationToken)
     {
-        ShoppingList shoppingList = await unitOfWork.ShoppingListRepository.GetAsync(item => item.ShoppingListID == request.ShoppingListID);
-        if (shoppingList is null)
+        try
         {
-            throw new ShoppingListNotFoundException(request.ShoppingListID.ToString());
+            ShoppingList shoppingList = await unitOfWork.ShoppingListRepository.GetAsync(item => item.ShoppingListID == request.ShoppingListID);
+            if (shoppingList is null)
+            {
+                throw new ShoppingListNotFoundException(request.ShoppingListID.ToString());
+            }
+            mapper.Map(request, shoppingList);
+            unitOfWork.ShoppingListRepository.Update(shoppingList);
+            await unitOfWork.CommitAsync();
+            return shoppingList;
         }
-        mapper.Map(request, shoppingList);
-        unitOfWork.ShoppingListRepository.Update(shoppingList);
-        await unitOfWork.CommitAsync();
-        return shoppingList;
+        catch (Exception)
+        {
+
+            throw;
+        }
     }
 }

@@ -15,12 +15,15 @@ public sealed class GetShoppingListHandler : IRequestHandler<GetShoppingListRequ
 
     public async Task<ShoppingList> Handle(GetShoppingListRequest request, CancellationToken cancellationToken)
     {
-        ShoppingList shoppingList = unitOfWork.ShoppingListRepository.Get(o => o.ShoppingItems).Where(o => o.UserName.Equals(request.UserName) && o.ShoppingListID == request.ShoppingListID).FirstOrDefault();
-
-        if (shoppingList is null)
+        try
         {
-            throw new ShoppingListNotFoundException(request.ShoppingListID.ToString());
+            return unitOfWork.ShoppingListRepository.Get(o => o.ShoppingItems).Where(o => o.UserName.Equals(request.UserName) && o.ShoppingListID == request.ShoppingListID).FirstOrDefault();
+
         }
-        return shoppingList;
+        catch (Exception)
+        {
+
+            throw;
+        }
     }
 }

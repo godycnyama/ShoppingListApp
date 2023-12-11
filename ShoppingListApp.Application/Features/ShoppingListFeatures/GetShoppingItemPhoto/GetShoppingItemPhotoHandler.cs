@@ -14,6 +14,14 @@ public sealed class GetShoppingItemPhotoHandler : IRequestHandler<GetShoppingIte
 
     public async Task<FileResponse> Handle(GetShoppingItemPhotoRequest request, CancellationToken cancellationToken)
     {
-        return await _fileService.GetFile(request.FileName);
+        try
+        {
+            return await _fileService.GetFile(request.FileName);
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
     }
 }

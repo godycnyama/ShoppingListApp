@@ -18,20 +18,28 @@ public sealed class DeleteItemFromShoppingListHandler : IRequestHandler<DeleteIt
 
     public async Task<ShoppingList> Handle(DeleteItemFromShoppingListRequest request, CancellationToken cancellationToken)
     {
-        ShoppingList shoppingList = unitOfWork.ShoppingListRepository.Get(o => o.ShoppingItems).Where(o => o.UserName.Equals(request.UserName) && o.ShoppingListID == request.ShoppingListID).FirstOrDefault();
-        if (shoppingList is null)
+        try
         {
-            throw new ShoppingListNotFoundException(request.ShoppingListID.ToString());
-        }
-        ShoppingItem shoppingItem = shoppingList.ShoppingItems.FirstOrDefault(o => o.ShoppingItemID == request.ItemID);
-        if (shoppingItem is null)
-        {
-            throw new ShoppingItemNotFoundException(request.ItemID.ToString());
-        }
+            ShoppingList shoppingList = unitOfWork.ShoppingListRepository.Get(o => o.ShoppingItems).Where(o => o.UserName.Equals(request.UserName) && o.ShoppingListID == request.ShoppingListID).FirstOrDefault();
+            if (shoppingList is null)
+            {
+                throw new ShoppingListNotFoundException(request.ShoppingListID.ToString());
+            }
+            ShoppingItem shoppingItem = shoppingList.ShoppingItems.FirstOrDefault(o => o.ShoppingItemID == request.ItemID);
+            if (shoppingItem is null)
+            {
+                throw new ShoppingItemNotFoundException(request.ItemID.ToString());
+            }
 
-        shoppingList.ShoppingItems.Remove(shoppingItem);
-        unitOfWork.ShoppingListRepository.Update(shoppingList);
-        await unitOfWork.CommitAsync();
-        return shoppingList;
+            shoppingList.ShoppingItems.Remove(shoppingItem);
+            unitOfWork.ShoppingListRepository.Update(shoppingList);
+            await unitOfWork.CommitAsync();
+            return shoppingList;
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
     }
 }

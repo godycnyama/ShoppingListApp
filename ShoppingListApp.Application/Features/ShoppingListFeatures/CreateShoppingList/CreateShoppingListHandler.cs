@@ -17,9 +17,17 @@ public sealed class CreateShoppingListHandler : IRequestHandler<CreateShoppingLi
 
     public async Task<ShoppingList> Handle(CreateShoppingListRequest request, CancellationToken cancellationToken)
     {
-        ShoppingList shoppingList = mapper.Map<ShoppingList>(request);
-        await unitOfWork.ShoppingListRepository.AddAsync(shoppingList);
-        await unitOfWork.CommitAsync();
-        return shoppingList;
+        try
+        {
+            ShoppingList shoppingList = mapper.Map<ShoppingList>(request);
+            await unitOfWork.ShoppingListRepository.AddAsync(shoppingList);
+            await unitOfWork.CommitAsync();
+            return shoppingList;
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
     }
 }

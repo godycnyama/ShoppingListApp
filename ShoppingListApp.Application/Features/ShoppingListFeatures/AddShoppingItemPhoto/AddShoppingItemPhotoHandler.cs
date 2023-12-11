@@ -21,23 +21,31 @@ public sealed class AddShoppingItemPhotoHandler : IRequestHandler<AddShoppingIte
 
     public async Task<ShoppingList> Handle(AddShoppingItemPhotoRequest request, CancellationToken cancellationToken)
     {
-        ShoppingList shoppingList = unitOfWork.ShoppingListRepository.Get(o => o.ShoppingItems).Where(o => o.UserName.Equals(request.UserName) && o.ShoppingListID == request.ShoppingListID).FirstOrDefault();
-        if (shoppingList is null)
+        try
         {
-            throw new ShoppingListNotFoundException(request.ShoppingListID.ToString());
-        }
+            ShoppingList shoppingList = unitOfWork.ShoppingListRepository.Get(o => o.ShoppingItems).Where(o => o.UserName.Equals(request.UserName) && o.ShoppingListID == request.ShoppingListID).FirstOrDefault();
+            if (shoppingList is null)
+            {
+                throw new ShoppingListNotFoundException(request.ShoppingListID.ToString());
+            }
 
-        ShoppingItem shoppingItem = shoppingList.ShoppingItems.FirstOrDefault(o => o.ShoppingItemID == request.ItemID);
-        if (shoppingItem is null)
+            ShoppingItem shoppingItem = shoppingList.ShoppingItems.FirstOrDefault(o => o.ShoppingItemID == request.ItemID);
+            if (shoppingItem is null)
+            {
+                throw new ShoppingItemNotFoundException(request.ItemID.ToString());
+            }
+
+            var fileName = await fileService.UploadFile(request.File);
+            shoppingItem.PhotoFileName = fileName;
+
+            unitOfWork.ShoppingListRepository.Update(shoppingList);
+            await unitOfWork.CommitAsync();
+            return shoppingList;
+        }
+        catch (Exception)
         {
-            throw new ShoppingItemNotFoundException(request.ItemID.ToString());
+
+            throw;
         }
-
-        var fileName = await fileService.UploadFile(request.File);
-        shoppingItem.PhotoFileName = fileName;
-
-        unitOfWork.ShoppingListRepository.Update(shoppingList);
-        await unitOfWork.CommitAsync();
-        return shoppingList;
     }
 }

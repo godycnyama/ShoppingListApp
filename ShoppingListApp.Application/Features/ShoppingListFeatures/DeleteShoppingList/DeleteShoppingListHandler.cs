@@ -19,13 +19,21 @@ public sealed class DeleteShoppingListHandler : IRequestHandler<DeleteShoppingLi
 
     public async Task<MessageResponse> Handle(DeleteShoppingListRequest request, CancellationToken cancellationToken)
     {
-        ShoppingList shoppingList = await unitOfWork.ShoppingListRepository.GetAsync(item => item.ShoppingListID == request.ShoppingListID && item.UserName.Equals(request.UserName));
-        if (shoppingList is null)
+        try
         {
-            throw new ShoppingListNotFoundException(request.ShoppingListID.ToString());
+            ShoppingList shoppingList = await unitOfWork.ShoppingListRepository.GetAsync(item => item.ShoppingListID == request.ShoppingListID && item.UserName.Equals(request.UserName));
+            if (shoppingList is null)
+            {
+                throw new ShoppingListNotFoundException(request.ShoppingListID.ToString());
+            }
+            unitOfWork.ShoppingListRepository.Remove(shoppingList);
+            await unitOfWork.CommitAsync();
+            return new MessageResponse { Message = $"Shopping list with id: {request.ShoppingListID} deleted successfully" };
         }
-        unitOfWork.ShoppingListRepository.Remove(shoppingList);
-        await unitOfWork.CommitAsync();
-        return new MessageResponse { Message = $"Shopping list with id: {request.ShoppingListID} deleted successfully" };
+        catch (Exception)
+        {
+
+            throw;
+        }
     }
 }

@@ -18,16 +18,24 @@ public sealed class AddItemToShoppingListHandler : IRequestHandler<AddItemToShop
 
     public async Task<ShoppingList> Handle(AddItemToShoppingListRequest request, CancellationToken cancellationToken)
     {
-        ShoppingList shoppingList = unitOfWork.ShoppingListRepository.Get(o => o.ShoppingItems).Where(o => o.UserName.Equals(request.UserName) && o.ShoppingListID == request.ShoppingListID).FirstOrDefault();
-        if (shoppingList is null)
+        try
         {
-            throw new ShoppingListNotFoundException(request.ShoppingListID.ToString());
+            ShoppingList shoppingList = unitOfWork.ShoppingListRepository.Get(o => o.ShoppingItems).Where(o => o.UserName.Equals(request.UserName) && o.ShoppingListID == request.ShoppingListID).FirstOrDefault();
+            if (shoppingList is null)
+            {
+                throw new ShoppingListNotFoundException(request.ShoppingListID.ToString());
+            }
+            ShoppingItem shoppingItem = new();
+            mapper.Map(request.ShoppingItemDTO, shoppingItem);
+            shoppingList.ShoppingItems.Add(shoppingItem);
+            unitOfWork.ShoppingListRepository.Update(shoppingList);
+            await unitOfWork.CommitAsync();
+            return shoppingList;
         }
-        ShoppingItem shoppingItem = new();
-        mapper.Map(request.ShoppingItemDTO, shoppingItem);
-        shoppingList.ShoppingItems.Add(shoppingItem);
-        unitOfWork.ShoppingListRepository.Update(shoppingList);
-        await unitOfWork.CommitAsync();
-        return shoppingList;
+        catch (Exception)
+        {
+
+            throw;
+        }
     }
 }
