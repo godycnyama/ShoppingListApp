@@ -58,6 +58,7 @@ Follow these steps to get started with the Shopping List API:
      ```bash
      dotnet test
      ```
+   - Some of the unit tests are failing. Due to time constraints, l could not debug and fix the failing tests.
 
 ## Usage
 
@@ -77,3 +78,6 @@ The API provides the following endpoints:
 - `DELETE /api/v1/shoppinglists/{shoppingListID}/items/{id}`: Delete item from shopping list.
 - `POST /api/v1/shoppinglists/{shoppingListID}/items/{id}/photo`: Add photo to shopping list item.
 - `GET /api/v1/shoppinglists/{shoppingListID}/items/{id}/photo/{fileName}`: Get shopping list item photo.
+
+## Security
+- This API is OAuth2.0 secured using Auth0 as the authentication provider. In order for one to test it, one needs to attach a Bearer Tokento the authorization header. I can make a manually generated token available for testing purposes.
