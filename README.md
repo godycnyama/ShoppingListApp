@@ -45,12 +45,13 @@ Follow these steps to get started with the Shopping List API:
        ```bash
      docker-compose up -d
      ```
+    - Alternatively, you may start the app in Visual Studio by choosing Docker Compose.
        
 7. **Access the API:**
-   - The API will be available at `https://localhost:7292` or `http://localhost:5251`.
+   - The API will be available at `https://localhost:59078`.This may vary depending on the computer its' running on.
 
 8. **Access the API Swagger Documentation:**
-   - The API Swagger documentation will be available at `https://localhost:7292/swagger/index.html`.
+   - The API Swagger documentation will be available at `https://localhost:59078/swagger/index.html`.This may vary depending on the computer its' running on.
 
 9. **Run unit tests:**
    - Run the unit tests within Visual Studio or use the command line with the following command:
