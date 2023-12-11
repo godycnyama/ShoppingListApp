@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a ShoppingListApp API based on .Net 8 and minimal api concepts. It was designed following Clean Architecture principles. It consists of 5 projects namely ShoppingListApp.API, ShoppingListApp.Application, ShoppingListApp.Infrastructure, ShoppingListApp.Domain and ShoppingListApp.UnitTests.
+This project is a ShoppingListApp API based on .Net 7 and minimal api concepts. It was designed following Clean Architecture principles. It consists of 5 projects namely ShoppingListApp.API, ShoppingListApp.Application, ShoppingListApp.Infrastructure, ShoppingListApp.Domain and ShoppingListApp.UnitTests.
 Besides Clean Architecture, Vertical slice architecture was used to implemement ShoppingListApp.Application, which is the business logic layer.
 A number of designs patterns were used during the implementation of the solution, one of them being the  Mediator pattern used in the business logic layer, ShoppingListApp.Application. The MediatR library was utilised to implement the mediator pattern as well as to implement the vertical slice architecture in ShoppingListApp.Application. In the infrastructure layer (ShoppingListApp.Infrastructure), the unit of work and repository patterns were utilised to interact with the database while utilising Entity Framework Core. SQL Server (running in a Docker container) is used as the database. Furthermore, to serve shopping item images, Minio (running in a Docker containter) is used. SOLID principles and clean code principles are used throughout the solution code base. Using MediatR and Carter libraries helped a lot in in writing loosely coupled, easily testable, clean code. MSTest was utilised as the test framework.
 The ShoppingListApp API also runs in a Docker container. Docker compose is used to start all the 3 containers to run the api.
@@ -28,7 +28,7 @@ Follow these steps to get started with the Shopping List API:
 
 1. **Prerequisites:**
    - [Visual Studio](https://visualstudio.microsoft.com/) installed on your system.
-   - [.NET Core SDK 8](https://dotnet.microsoft.com/download/dotnet) for building and running the project.
+   - [.NET Core SDK 7](https://dotnet.microsoft.com/download/dotnet) for building and running the project.
 
 2. **Clone the repository:**
    ```bash
