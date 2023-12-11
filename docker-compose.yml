@@ -30,5 +30,5 @@ services:
     environment:
       - MINIO_ROOT_USER=Q3AM3UQ867SPQQA43P2F
       - MINIO_ROOT_PASSWORD=zuf+tfteSlswRu7BJ86wtrueekitnifILbZam1KYY3TG
-      - MINIO_ENDPOINT=localhost:9000
+      - MINIO_ENDPOINT=host.docker.internal:9000
     restart: always

@@ -15,6 +15,9 @@ builder.Services.AddAntiforgery();
 builder.Services.AddCarter();
 builder.Services.ConfigureApplicationServices(builder.Configuration);
 builder.Services.ConfigureInfrastructureServices(builder.Configuration);
+builder.Services.AddAuthentication().AddJwtBearer();
+builder.Services.AddAuthorization();
+/*
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -24,6 +27,7 @@ builder.Services.AddAuthentication(options =>
     options.Authority = builder.Configuration["Auth0:Domain"];
     options.Audience = builder.Configuration["Auth0:Audience"];
 });
+*/
 /*
 builder.Services.AddAuthorization(o =>
 {
@@ -75,13 +79,6 @@ if (app.Environment.IsDevelopment())
 //app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
-
-app.UseAuthentication();
-
-//app.UseAuthorization();
-
-
-//app.UseAntiforgery();
 
 app.MapCarter();
 

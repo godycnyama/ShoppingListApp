@@ -15,7 +15,8 @@ public class GetShoppingListEndpoint: ICarterModule
     public void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapGet("api/v1/shoppinglists/{shoppingListID:int}", GetShoppingList)
-        .WithName("GetShoppingList");
+        .WithName("GetShoppingList")
+        .RequireAuthorization();
     }
 
     private async Task<IResult> GetShoppingList(int shoppingListID,string userName, IMediator mediator)

@@ -11,7 +11,8 @@ public class UpdateItemInShoppingListEndpoint : ICarterModule
     public void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapPut("api/v1/shoppinglists/{shoppingListID:int}/items", UpdateItemInShoppingList)
-        .WithName("UpdateItemInShoppingList");
+        .WithName("UpdateItemInShoppingList")
+        .RequireAuthorization();
     }
 
     private async Task<IResult> UpdateItemInShoppingList(int shoppingListID, int shoppingItemID, string userName, ShoppingItemDTO shoppingItem, IMediator mediator)

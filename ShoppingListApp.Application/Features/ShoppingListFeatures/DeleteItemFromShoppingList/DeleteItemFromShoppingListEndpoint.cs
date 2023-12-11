@@ -16,7 +16,8 @@ public class DeleteItemFromShoppingListEndpoint : ICarterModule
     public void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapDelete("api/v1/shoppinglists/{shoppingListID:int}/items", DeleteItemFromShoppingList)
-        .WithName("DeleteItemFromShoppingList");
+        .WithName("DeleteItemFromShoppingList")
+        .RequireAuthorization();
     }
 
     private async Task<IResult> DeleteItemFromShoppingList(int shoppingListID,string userName, int itemID, IMediator mediator)

@@ -16,7 +16,8 @@ public class AddItemToShoppingListEndpoint : ICarterModule
     public void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapPost("api/v1/shoppinglists/{shoppingListID:int}/items", AddItemToShoppingList)
-        .WithName("AddItemToShoppingList");
+        .WithName("AddItemToShoppingList")
+        .RequireAuthorization();
     }
 
     public async Task<IResult> AddItemToShoppingList(int shoppingListID, string userName, ShoppingItemDTO shoppingItemDTO, IMediator mediator)

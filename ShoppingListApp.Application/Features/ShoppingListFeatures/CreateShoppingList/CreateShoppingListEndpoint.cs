@@ -16,7 +16,8 @@ public class CreateShoppingListEndpoint : ICarterModule
     public void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapPost("api/v1/shoppinglists", CreateShoppingList)
-        .WithName("CreateShoppingList");
+        .WithName("CreateShoppingList")
+        .RequireAuthorization();
     }
 
     private async Task<IResult> CreateShoppingList(CreateShoppingListRequest createShoppingListRequest, IMediator mediator)
