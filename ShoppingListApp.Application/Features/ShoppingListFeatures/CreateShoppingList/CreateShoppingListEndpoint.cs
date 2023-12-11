@@ -3,7 +3,6 @@ using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using ShoppingListApp.Application.Features.ShoppingListFeatures.CreateShoppingList;
 using ShoppingListApp.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,8 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShoppingListApp.Application.Features.ShoppingListFeatures.CreateShoppingListQuery;
-public class CreateShoppingListEndpoint: ICarterModule
+namespace ShoppingListApp.Application.Features.ShoppingListFeatures.CreateShoppingList;
+public class CreateShoppingListEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {

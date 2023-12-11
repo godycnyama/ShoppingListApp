@@ -15,7 +15,8 @@ public class AddShoppingItemPhotoEndpoint : ICarterModule
     public void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapPost("api/v1/shoppinglists/{shoppingListID:int}/items/{itemID:int}/photo", AddItemPhoto)
-        .WithName("AddItemPhoto");
+        .WithName("AddItemPhoto")
+        .DisableAntiforgery(); 
     }
 
     private async Task<IResult> AddItemPhoto(int shoppingListID, string userName, int itemID, IFormFile file, IMediator mediator)

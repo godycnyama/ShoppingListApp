@@ -13,7 +13,7 @@ services:
 
   sqlserver:
     image: "mcr.microsoft.com/mssql/server:2017-latest"
-    container_name: sql_server2022
+    container_name: sql_server2017
     environment:
       - SA_PASSWORD=D6nm3lRbdjjm&9xcFbso
       - ACCEPT_EULA=Y

@@ -19,7 +19,8 @@ public static class ServiceExtensions
         services.AddDbContext<ShoppingListAppDataContext>(opt => opt.UseSqlServer(connectionString));
         services.AddMinio(configureClient => configureClient
             .WithEndpoint(Environment.GetEnvironmentVariable("MINIO_ENDPOINT") ?? configuration["Minio:Endpoint"])
-            .WithCredentials(Environment.GetEnvironmentVariable("MINIO_ROOT_USER") ?? configuration["Minio:AccessKey"], Environment.GetEnvironmentVariable("MINIO_ROOT_PASSWORD") ?? configuration["Minio:SecretKey"]));
+            .WithCredentials(Environment.GetEnvironmentVariable("MINIO_ROOT_USER") ?? configuration["Minio:AccessKey"], Environment.GetEnvironmentVariable("MINIO_ROOT_PASSWORD") ?? configuration["Minio:SecretKey"])
+            .WithSSL(false));
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IShoppingListRepository, ShoppingListRepository>();
         services.AddScoped<IAccountRepository, AccountRepository>();
