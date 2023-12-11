@@ -4,7 +4,7 @@
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
     <DockerPublishLocally>False</DockerPublishLocally>
-    <ProjectGuid>0faeadb6-a7bd-4e9f-a8ac-af0ca1374b8d</ProjectGuid>
+    <ProjectGuid>273c1d55-329d-4b94-8500-2dc38ed2a0f9</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>shoppinglistapp.api</DockerServiceName>

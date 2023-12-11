@@ -72,7 +72,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
+//app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 
@@ -81,7 +81,7 @@ app.UseAuthentication();
 //app.UseAuthorization();
 
 
-app.UseAntiforgery();
+//app.UseAntiforgery();
 
 app.MapCarter();
 
