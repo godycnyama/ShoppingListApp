@@ -3,15 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using ShoppingListApp.Application.Abstractions.Services;
 using ShoppingListApp.Application.Common.Responses;
-using ShoppingListApp.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ShoppingListApp.Application.Features.ShoppingListFeatures.GetShoppingItemPhoto;
 public class GetShoppingItemPhotoEndpoint : ICarterModule

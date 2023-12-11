@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
-using ShoppingListApp.Application.Common.Responses;
 using ShoppingListApp.Domain.Entities;
 
 namespace ShoppingListApp.Application.Features.ShoppingListFeatures.AddShoppingItemPhoto;

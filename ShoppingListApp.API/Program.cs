@@ -1,12 +1,9 @@
 using Carter;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using ShoppingListApp.Application;
-using ShoppingListApp.Application.Middleware;
 using ShoppingListApp.Infrastructure;
 using ShoppingListApp.Infrastructure.Persistence.Context;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,25 +14,6 @@ builder.Services.ConfigureApplicationServices(builder.Configuration);
 builder.Services.ConfigureInfrastructureServices(builder.Configuration);
 builder.Services.AddAuthentication().AddJwtBearer();
 builder.Services.AddAuthorization();
-/*
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options =>
-{
-    options.Authority = builder.Configuration["Auth0:Domain"];
-    options.Audience = builder.Configuration["Auth0:Audience"];
-});
-*/
-/*
-builder.Services.AddAuthorization(o =>
-{
-    o.AddPolicy("shoppinglist:read-write", p => p.
-        RequireAuthenticatedUser().
-        RequireClaim("permissions", "shoppinglist:read-write"));
-});
-*/
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(opt =>
 {

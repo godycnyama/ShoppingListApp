@@ -4,7 +4,6 @@ using ShoppingListApp.Application.Abstractions.UnitOfWork;
 using ShoppingListApp.Application.Common.Responses;
 using ShoppingListApp.Application.Exceptions;
 using ShoppingListApp.Domain.Entities;
-using System.Security.Principal;
 
 namespace ShoppingListApp.Application.Features.ShoppingListFeatures.DeleteShoppingList;
 public sealed class DeleteShoppingListHandler : IRequestHandler<DeleteShoppingListRequest, MessageResponse>

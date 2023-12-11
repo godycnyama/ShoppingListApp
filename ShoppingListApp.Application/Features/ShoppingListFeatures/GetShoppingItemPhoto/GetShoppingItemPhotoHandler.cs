@@ -1,10 +1,6 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using ShoppingListApp.Application.Abstractions.Services;
-using ShoppingListApp.Application.Abstractions.UnitOfWork;
 using ShoppingListApp.Application.Common.Responses;
-using ShoppingListApp.Application.Exceptions;
-using ShoppingListApp.Domain.Entities;
 
 namespace ShoppingListApp.Application.Features.ShoppingListFeatures.GetShoppingItemPhoto;
 public sealed class GetShoppingItemPhotoHandler : IRequestHandler<GetShoppingItemPhotoRequest, FileResponse>

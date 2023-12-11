@@ -3,12 +3,6 @@ using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using ShoppingListApp.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShoppingListApp.Application.Features.ShoppingListFeatures.DeleteItemFromShoppingList;
 public class DeleteItemFromShoppingListEndpoint : ICarterModule
