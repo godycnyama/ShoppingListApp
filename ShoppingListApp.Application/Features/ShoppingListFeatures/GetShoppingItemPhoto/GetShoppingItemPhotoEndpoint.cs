@@ -11,8 +11,7 @@ public class GetShoppingItemPhotoEndpoint : ICarterModule
     public void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapGet("api/v1/shoppinglists/{shoppingListID:int}/items/{itemID:int}/photo/{fileName}", GetShoppingItemPhoto)
-        .WithName("GetShoppingItemPhoto")
-        .RequireAuthorization();
+        .WithName("GetShoppingItemPhoto");
     }
 
     private async Task<IResult> GetShoppingItemPhoto(int shoppingListID, string UserName, int itemID, string fileName,IMediator mediator)
